@@ -1,0 +1,8 @@
+<h1>BeerTrax</h1>
+<br>
+<% @beers.each do |beer| %>
+    <h2><%= beer.name %></h2>
+    <em><%= beer.brewery %></em>
+    <p><%= beer.comments %></p>
+    <br>
+<% end %>
