@@ -2,7 +2,7 @@
 <br>
 <% @beers.each do |beer| %>
     <h2><%= beer.name %></h2>
-    <em><%= beer.brewery %></em>
+    <em><%= beer.brewery.name %></em>
     <p><%= beer.comments %></p>
     <br>
 <% end %>

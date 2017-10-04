@@ -1,3 +1,5 @@
 class Beer < ActiveRecord::Base
-    belongs_to :user
+    has_many :user_beers
+    has_many :users, through: :user_beers
+    belongs_to :brewery
 end
