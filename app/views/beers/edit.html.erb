@@ -1,1 +1,26 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1><%= @beer.name %></h1>
+
+<form action="/beers/<%=@beer.id%>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="patch">
+    <label>Beer:</label><br>
+    <label for="beer_name">Name</label>
+    <input type="text" name="beer[name]" id="beer_name" value="<%=@beer.name%>"><br>
+    <label for="ratebeer_url">Ratebeer URL</label>
+    <input type="text" name="beer[ratebeer_url]" id="ratebeer_url" value="<%=@beer.ratebeer_url%>"><br>
+    <label for="style">Style</label>
+    <input type="text" name="beer[style]" id="style" value="<%=@beer.style%>"><br>
+    <label for="rating">Rating</label>
+    <input type="text" name="beer[rating]" id="rating" value="<%=@beer.rating%>"><br>
+    <label for="comments">Comments</label>
+    <input type="text" name="beer[comments]" id="comments" value="<%=@beer.comments%>"><br><br>
+
+    <label>Brewery:</label><br>
+    <label for="brewery_name">Brewery Name</label>
+    <input type="text" name="brewery_name" id="brewery_name" value="<%=@beer.brewery.name%>"><br>
+    <label for="city">City</label>
+    <input type="text" name="city" id="city" value="<%=@beer.brewery.city%>"><br>
+    <label for="state">State</label>
+    <input type="text" name="state" id="state" value="<%=@beer.brewery.state%>"><br>
+    <br>
+    <input type="submit" value="Update">
+</form>

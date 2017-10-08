@@ -1,1 +1,11 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%= @beer.name %></h1>
+<h2><%= @beer.brewery.name %></h2>
+<h3><%= @beer.brewery.city %>, <%= @beer.brewery.state %></h3>
+<h3><%= @beer.ratebeer_url %></h3>
+<h3><%= @beer.ratebeer_url %></h3>
+<h3><%= @beer.style %></h3>
+<h3><%= @beer.rating %></h3>
+<h3><%= @beer.comments %></h3>
+
+<br>
+<a href="/beers/<%=@beer.id%>/edit"><button>Edit</button></a>
