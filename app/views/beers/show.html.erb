@@ -14,7 +14,9 @@
 <h4 id="beer-info">BEER INFO</h4>
 <h4 class="section">Brewed By:</h4>
 <div><%= @beer.brewery.name %></div>
-<%= @beer.brewery.city %>, <%= @beer.brewery.state %>
+<% if @beer.brewery.city != "" && @beer.brewery.state != "" %>
+    <%= @beer.brewery.city %>, <%= @beer.brewery.state %>
+<% end %>
 <h4 class="section">Ratebeer Page:</h4>
 <a href="<%=@beer.ratebeer_url%>" target="new"><%= @beer.ratebeer_url %></a>
 <h4 class="section">Style:</h4>

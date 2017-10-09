@@ -1,6 +1,10 @@
+<h2>Recently Added Beers</h2>
+<p id="helper-text">Sign up or log in to view more information about each beer.
+
 <% @beers.reverse.each do |beer| %>
-    <h2><%= beer.name %></h2>
-    <em><%= beer.brewery.name %></em>
-    <p><%= beer.comments %></p>
-    <br>
+    <h2 id="beer_name_index"><%= beer.name %></h2>
+    <p><%= beer.brewery.name %> 
+    <% if beer.brewery.city != "" && beer.brewery.state != "" %>
+        / <%= beer.brewery.city %>, <%= beer.brewery.state %></p>
+    <% end %>
 <% end %>

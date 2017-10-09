@@ -2,5 +2,8 @@
 
 <% @beers.reverse.each do |beer| %>
     <h2 id="beer_name_index"><a href="/beers/<%=beer.id%>"><%= beer.name %></a></h2>
-    <p><%= beer.brewery.name %> / <%= beer.brewery.city %>, <%= beer.brewery.state %></p>
+    <p><%= beer.brewery.name %> 
+    <% if beer.brewery.city != "" && beer.brewery.state != "" %>
+        / <%= beer.brewery.city %>, <%= beer.brewery.state %></p>
+    <% end %>
 <% end %>

@@ -1,9 +1,9 @@
-<h1>Add a Beer to Your List</h1>
+<h2>Add a Beer to Your List</h2>
 <form action="/beers" method="POST">
     <div class="form-group">
-        <h2>Beer:</h2>
+        <h3>Beer:</h3>
         <label for="beer_name">Name</label>
-        <input class="form-control" type="text" name="beer_name" id="beer_name">
+        <input class="form-control" type="text" name="beer_name" id="beer_name" required>
         <label for="ratebeer_url">Ratebeer URL</label>
         <input class="form-control" type="text" name="ratebeer_url" id="ratebeer_url">
         <label for="style">Style</label>
@@ -14,9 +14,9 @@
         <textarea class="form-control" rows="3" name="comments" id="comments"></textarea>
     </div>
     <div class="form-group">
-        <h2>Brewery:</h2>
+        <h3>Brewery:</h3>
         <label for="brewery_name">Brewery Name</label>
-        <input class="form-control" type="text" name="brewery_name" id="brewery_name">
+        <input class="form-control" type="text" name="brewery_name" id="brewery_name" required>
         <label for="city">City</label>
         <input class="form-control" type="text" name="city" id="city">
         <label for="state">State</label>

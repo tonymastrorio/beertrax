@@ -67,7 +67,7 @@ class BeersController < ApplicationController
   # DELETE: /beers/5/delete
   delete "/beers/:id/delete" do
     @beer = Beer.find(params["id"])
-    if @beer.id == current_user.id
+    if @beer.user_id == current_user.id
       @beer.delete
       redirect "/beers"
     else

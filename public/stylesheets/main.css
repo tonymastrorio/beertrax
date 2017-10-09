@@ -107,10 +107,15 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+
   h2 {
     margin-top: 0;
+    margin-bottom: 20px;
   }
 
+  p#helper-text {
+    color: red;
+  }
 }
 
 @media only screen and (max-width: 600px) {
