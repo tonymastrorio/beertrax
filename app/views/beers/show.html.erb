@@ -2,10 +2,15 @@
 <h2><%= @beer.brewery.name %></h2>
 <h3><%= @beer.brewery.city %>, <%= @beer.brewery.state %></h3>
 <h3><%= @beer.ratebeer_url %></h3>
-<h3><%= @beer.ratebeer_url %></h3>
 <h3><%= @beer.style %></h3>
 <h3><%= @beer.rating %></h3>
 <h3><%= @beer.comments %></h3>
 
 <br>
-<a href="/beers/<%=@beer.id%>/edit"><button>Edit</button></a>
+<% if @beer.user.id == current_user.id %>
+    <a href="/beers/<%=@beer.id%>/edit"><button>Edit Beer</button></a><br><br>
+    <form action="/beers/<%=@beer.id%>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Beer">
+    </form>
+<% end %>

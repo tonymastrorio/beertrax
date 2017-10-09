@@ -22,6 +22,7 @@ class BeersController < ApplicationController
     @beer.style = params["style"]
     @beer.rating = params["rating"]
     @beer.comments = params["comments"]
+    @beer.user = current_user
 
     if params["brewery_name"] != ""
       @beer.brewery = Brewery.find_or_create_by(name: params["brewery_name"])
@@ -65,6 +66,12 @@ class BeersController < ApplicationController
 
   # DELETE: /beers/5/delete
   delete "/beers/:id/delete" do
-    redirect "/beers"
+    @beer = Beer.find(params["id"])
+    if @beer.id == current_user.id
+      @beer.delete
+      redirect "/beers"
+    else
+      redirect "/beers"
+    end
   end
 end

@@ -1,13 +1,7 @@
-<h1>BeerTrax</h1>
-
 <% @beers.reverse.each do |beer| %>
-    <h2><%= beer.name %></h2>
+    <h2><a href="/beers/<%=beer.id%>"><%= beer.name %></a></h2>
     <em><%= beer.brewery.name %></em>
     <p><%= beer.comments %></p>
     <br>
 <% end %>
 <br>
-
-<% if logged_in? %>
-    <a href="/logout"><button>Logout</button></a>
-<% end %>

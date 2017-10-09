@@ -7,6 +7,7 @@ class CreateBeers < ActiveRecord::Migration
         t.string :style
         t.integer :rating
         t.string :comments
+        t.integer :user_id
 
       t.timestamps null: false
     end
