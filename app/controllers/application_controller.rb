@@ -12,8 +12,11 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     @beers = Beer.all
-    
-    erb :index
+    if logged_in?
+      redirect to "/beers"
+    else
+      erb :index
+    end
   end
 
   helpers do

@@ -1,16 +1,25 @@
-<h1><%= @beer.name %></h1>
-<h2><%= @beer.brewery.name %></h2>
-<h3><%= @beer.brewery.city %>, <%= @beer.brewery.state %></h3>
-<h3><%= @beer.ratebeer_url %></h3>
-<h3><%= @beer.style %></h3>
-<h3><%= @beer.rating %></h3>
-<h3><%= @beer.comments %></h3>
+<h2 id="beer_name"><%= @beer.name %></h2>
+<h2 id="brewery_name"><%= @beer.brewery.name %></h2>
 
-<br>
 <% if @beer.user.id == current_user.id %>
-    <a href="/beers/<%=@beer.id%>/edit"><button>Edit Beer</button></a><br><br>
-    <form action="/beers/<%=@beer.id%>/delete" method="POST">
-        <input id="hidden" type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete Beer">
-    </form>
+    <div id="edit-delete-btns">
+        <a href="/beers/<%=@beer.id%>/edit"><button class="btn btn-primary">Edit Beer</button></a>
+        <form id="delete-btn" action="/beers/<%=@beer.id%>/delete" method="POST">
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <input class="btn btn-danger" type="submit" value="Delete Beer">
+        </form>
+    </div>
 <% end %>
+
+<h4 id="beer-info">BEER INFO</h4>
+<h4 class="section">Brewed By:</h4>
+<div><%= @beer.brewery.name %></div>
+<%= @beer.brewery.city %>, <%= @beer.brewery.state %>
+<h4 class="section">Ratebeer Page:</h4>
+<a href="<%=@beer.ratebeer_url%>" target="new"><%= @beer.ratebeer_url %></a>
+<h4 class="section">Style:</h4>
+<%= @beer.style %>
+<h4 class="section">Rating:</h4>
+<%= @beer.rating %>
+<h4 class="section">Notes:</h4>
+<%= @beer.comments %>

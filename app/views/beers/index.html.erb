@@ -1,7 +1,6 @@
+<h2>Recently Added Beers</h2>
+
 <% @beers.reverse.each do |beer| %>
-    <h2><a href="/beers/<%=beer.id%>"><%= beer.name %></a></h2>
-    <em><%= beer.brewery.name %></em>
-    <p><%= beer.comments %></p>
-    <br>
+    <h2 id="beer_name_index"><a href="/beers/<%=beer.id%>"><%= beer.name %></a></h2>
+    <p><%= beer.brewery.name %> / <%= beer.brewery.city %>, <%= beer.brewery.state %></p>
 <% end %>
-<br>
