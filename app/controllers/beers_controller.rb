@@ -2,12 +2,9 @@ class BeersController < ApplicationController
 
   # GET: /beers
   get "/beers" do
+    authenticate_user
     @beers = Beer.all
-    if !logged_in?
-      redirect to "/"
-    else
-      erb :"/beers/index.html"
-    end
+    erb :"/beers/index.html"
   end
 
   # GET: /beers/new
@@ -37,41 +34,54 @@ class BeersController < ApplicationController
 
   # GET: /beers/5
   get "/beers/:id" do
-    @beer = Beer.all.find(params["id"])
-
+    authenticate_user
+    find_beer
     erb :"/beers/show.html"
   end
 
   # GET: /beers/5/edit
   get "/beers/:id/edit" do
-    @beer = Beer.all.find(params["id"])
-
-    erb :"/beers/edit.html"
+    find_beer
+    if @beer.user != current_user
+      redirect "/beers/#{@beer.id}"
+    else
+      erb :"/beers/edit.html"
+    end
   end
 
   # PATCH: /beers/5
   patch "/beers/:id" do
-    @beer = Beer.find(params["id"])
-    @beer.update(params["beer"])
+    find_beer
+    if @beer.user == current_user
+      @beer.update(params["beer"])
 
-    @beer.brewery = Brewery.find_or_create_by(name: params["brewery_name"])
-    @beer.brewery.city = params["city"]
-    @beer.brewery.state = params["state"]
+      @beer.brewery = Brewery.find_or_create_by(name: params["brewery_name"])
+      @beer.brewery.city = params["city"]
+      @beer.brewery.state = params["state"]
 
-    @beer.save
-    @beer.brewery.save
-
+      @beer.save
+      @beer.brewery.save
+    end
     redirect "/beers/#{@beer.id}"
   end
 
   # DELETE: /beers/5/delete
   delete "/beers/:id/delete" do
-    @beer = Beer.find(params["id"])
-    if @beer.user_id == current_user.id
+    find_beer
+    if @beer.user == current_user
       @beer.delete
-      redirect "/beers"
-    else
+    end
+    redirect "/beers"
+  end
+
+  private 
+
+  def find_beer
+    @beer = Beer.find_by_id(params["id"])
+    if !@beer
       redirect "/beers"
     end
   end
+
+
 end

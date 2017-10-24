@@ -2,6 +2,7 @@ class BreweriesController < ApplicationController
 
   # GET: /breweries
   get "/breweries" do
+    authenticate_user
     erb :"/breweries/index.html"
   end
 
